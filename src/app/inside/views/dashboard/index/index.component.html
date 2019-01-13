@@ -1,0 +1,80 @@
+<div [@routerTransition]>
+  
+  <div class="row">
+    <div class="col s12 center-align">
+      <h4>Stand Up Meeting</h4>
+    </div>
+  </div>
+  
+  <table [hidden]="!users.length" class="centered">
+    <thead>
+      <tr>
+        <th>&nbsp;</th>
+        <th><span class=" truncate">En curso</span></th>
+        <th><span class=" truncate">En espera</span></th>
+        <th><span class=" truncate">Listo</span></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>&nbsp;</td>
+        <td>
+          <button class="btn-flat blue-text" (click)="aTak('to_do')"><i class="material-icons">add</i></button>
+        </td>
+        <td>
+          <button class="btn-flat blue-text" (click)="aTak('waiting')"><i class="material-icons">add</i></button>
+        </td>
+        <td>
+          <button class="btn-flat blue-text" (click)="aTak('done')"><i class="material-icons">add</i></button>
+        </td>
+      </tr>
+      <tr *ngFor="let user of users">
+        <td>
+          <img materialize="tooltip" class="btn tooltipped" data-position="right" data-delay="50" [attr.data-tooltip]="user?.name"
+            *ngIf="user?.photoUrl" class="responsive-img circle" [src]="user?.photoUrl" width="35">
+        </td>
+        <td>
+          <div *ngFor="let tak of taks | filterBy: { user_id: user?.id_user, status: 'to_do' }" style="margin-bottom: 5px">
+            <button materialize="dropdown" data-constrainWidth="false" data-alignment="right" data-beloworigin="true"
+              class="dropdown-button btn-flat truncate" [attr.data-activates]="'item' + tak?.id">{{
+              tak?.name }}</button>
+            <ul [id]="'item' + tak?.id" class='dropdown-content' *ngIf="user?.id_user == id_user">
+              <li><a (click)="moveTak(tak?.id, 'waiting')" class="black-text">Mover a: En espera</a></li>
+              <li><a (click)="moveTak(tak?.id, 'done')" class="black-text">Mover a: Listo</a></li>
+              <li><a (click)="editTak(tak?.id, tak)" class="black-text">Editar</a></li>
+              <li><a (click)="dTak(tak?.id)" class="black-text">Eliminar</a></li>
+            </ul>
+          </div>
+        </td>
+        <td>
+          <div *ngFor="let tak of taks | filterBy: { user_id: user?.id_user, status: 'waiting' }" style="margin-bottom: 5px">
+            <button materialize="dropdown" data-constrainWidth="false" data-alignment="right" data-beloworigin="true"
+              class="dropdown-button btn-flat truncate" [attr.data-activates]="'item' + tak?.id">{{
+              tak?.name }}</button>
+            <ul [id]="'item' + tak?.id" class='dropdown-content' *ngIf="user?.id_user == id_user">
+              <li><a (click)="moveTak(tak?.id, 'to_do')" class="black-text">Mover a: En curso</a></li>
+              <li><a (click)="moveTak(tak?.id, 'done')" class="black-text">Mover a: Listo</a></li>
+              <li><a (click)="editTak(tak?.id, tak)" class="black-text">Editar</a></li>
+              <li><a (click)="dTak(tak?.id)" class="black-text">Eliminar</a></li>
+            </ul>
+          </div>
+        </td>
+        <td>
+          <div *ngFor="let tak of taks | filterBy: { user_id: user?.id_user, status: 'done' }" style="margin-bottom: 5px">
+            <button materialize="dropdown" data-constrainWidth="false" data-alignment="right" data-beloworigin="true"
+              class="dropdown-button btn-flat truncate" [attr.data-activates]="'item' + tak?.id">{{
+              tak?.name }}</button>
+            <ul [id]="'item' + tak?.id" class='dropdown-content' *ngIf="user?.id_user == id_user">
+              <li><a (click)="moveTak(tak?.id, 'to_do')" class="black-text">Mover a: En curso</a></li>
+              <li><a (click)="moveTak(tak?.id, 'waiting')" class="black-text">Mover a: En espera</a></li>
+              <li><a (click)="editTak(tak?.id, tak)" class="black-text">Editar</a></li>
+              <li><a (click)="dTak(tak?.id)" class="black-text">Eliminar</a></li>
+            </ul>
+          </div>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>

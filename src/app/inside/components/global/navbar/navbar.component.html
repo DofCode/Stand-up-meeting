@@ -1,0 +1,20 @@
+<div class="navbar-fixed">
+  <nav class="blue darken-4">
+    <div class="nav-wrapper container">
+      <span class="brand-logo ">Luminux</span>
+      <ul id="nav-mobile" class="right">
+        <li>
+          <a materialize="dropdown" data-constrainWidth="false" data-alignment="right" data-beloworigin="true" href="javascript:void(0)"
+            class="dropdown-button" data-activates="navBarDrop">
+            <span class="hide-on-small-only">{{ user?.displayName }}<i class="material-icons right">arrow_drop_down</i></span>
+            <span class="hide-on-med-and-up show-on-small"><i class="material-icons">account_circle</i></span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<ul id='navBarDrop' class='dropdown-content'>
+  <li><a href="javascript:void(0)" class="black-text" (click)="logout()">Cerrar sesión</a></li>
+</ul>

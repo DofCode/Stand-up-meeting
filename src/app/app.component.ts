@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
-  title = 'stand-up-meeting';
+  ngOnInit() {
+    console.log("%cARIAS21Plus", "color: #3d83ee; font-size: 24px;");
+  }
 }
