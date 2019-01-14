@@ -5,12 +5,12 @@
 export const environment = {
   production: false ,
   firebaseConfig : {
-    apiKey: "AIzaSyDS4n2PqETG-UjcqPcaQ4FeRILP5EyTvOk",
-    authDomain: "sum-luminux.firebaseapp.com",
-    databaseURL: "https://sum-luminux.firebaseio.com",
-    projectId: "sum-luminux",
-    storageBucket: "sum-luminux.appspot.com",
-    messagingSenderId: "182832199346"
+    apiKey: '<your-key>',
+    authDomain: '<your-project-authdomain>',
+    databaseURL: '<your-database-URL>',
+    projectId: '<your-project-id>',
+    storageBucket: '<your-storage-bucket>',
+    messagingSenderId: '<your-messaging-sender-id>'
   }
 };
 
