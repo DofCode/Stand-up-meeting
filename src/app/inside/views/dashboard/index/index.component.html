@@ -37,9 +37,9 @@
         <td>
           <div *ngFor="let tak of taks | filterBy: { user_id: user?.id_user, status: 'to_do' }" style="margin-bottom: 5px">
             <button materialize="dropdown" data-constrainWidth="false" data-alignment="right" data-beloworigin="true"
-              class="dropdown-button btn-flat truncate" [attr.data-activates]="'item' + tak?.id">{{
+              class="dropdown-button btn-flat truncate" [attr.data-activates]="'item_to_do' + tak?.id">{{
               tak?.name }}</button>
-            <ul [id]="'item' + tak?.id" class='dropdown-content' *ngIf="user?.id_user == id_user">
+            <ul [id]="'item_to_do' + tak?.id" class='dropdown-content' *ngIf="user?.id_user == id_user">
               <li><a (click)="moveTak(tak?.id, 'waiting')" class="black-text">Mover a: En espera</a></li>
               <li><a (click)="moveTak(tak?.id, 'done')" class="black-text">Mover a: Listo</a></li>
               <li><a (click)="editTak(tak?.id, tak)" class="black-text">Editar</a></li>
@@ -50,9 +50,9 @@
         <td>
           <div *ngFor="let tak of taks | filterBy: { user_id: user?.id_user, status: 'waiting' }" style="margin-bottom: 5px">
             <button materialize="dropdown" data-constrainWidth="false" data-alignment="right" data-beloworigin="true"
-              class="dropdown-button btn-flat truncate" [attr.data-activates]="'item' + tak?.id">{{
+              class="dropdown-button btn-flat truncate" [attr.data-activates]="'item_waiting' + tak?.id">{{
               tak?.name }}</button>
-            <ul [id]="'item' + tak?.id" class='dropdown-content' *ngIf="user?.id_user == id_user">
+            <ul [id]="'item_waiting' + tak?.id" class='dropdown-content' *ngIf="user?.id_user == id_user">
               <li><a (click)="moveTak(tak?.id, 'to_do')" class="black-text">Mover a: En curso</a></li>
               <li><a (click)="moveTak(tak?.id, 'done')" class="black-text">Mover a: Listo</a></li>
               <li><a (click)="editTak(tak?.id, tak)" class="black-text">Editar</a></li>
@@ -63,9 +63,9 @@
         <td>
           <div *ngFor="let tak of taks | filterBy: { user_id: user?.id_user, status: 'done' }" style="margin-bottom: 5px">
             <button materialize="dropdown" data-constrainWidth="false" data-alignment="right" data-beloworigin="true"
-              class="dropdown-button btn-flat truncate" [attr.data-activates]="'item' + tak?.id">{{
+              class="dropdown-button btn-flat truncate" [attr.data-activates]="'item_done' + tak?.id">{{
               tak?.name }}</button>
-            <ul [id]="'item' + tak?.id" class='dropdown-content' *ngIf="user?.id_user == id_user">
+            <ul [id]="'item_done' + tak?.id" class='dropdown-content' *ngIf="user?.id_user == id_user">
               <li><a (click)="moveTak(tak?.id, 'to_do')" class="black-text">Mover a: En curso</a></li>
               <li><a (click)="moveTak(tak?.id, 'waiting')" class="black-text">Mover a: En espera</a></li>
               <li><a (click)="editTak(tak?.id, tak)" class="black-text">Editar</a></li>
